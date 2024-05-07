@@ -20,7 +20,7 @@ if($cek > 0){
         $_SESSION['username'] = $username;
         $_SESSION['role'] ="admin";
         //alihkan ke halaman dashboard admin
-        header("location:tabel.php");
+        header("location:admin.php");
 
     //cek jika user login sebagai user
     }else if ($data['role']=="user"){
@@ -28,7 +28,7 @@ if($cek > 0){
         $_SESSION['username'] = $username;
         $_SESSION['role'] = "user";
         //alihkan ke halaman dashboard user
-        header("location:materi.php");
+        header("location:user.php");
     }else{
 
         //alihkan ke halaman login kembali
@@ -36,7 +36,7 @@ if($cek > 0){
     }
 }else{
     echo "<script>
-    alert('Login Failed');
+    alert('You are not registered yet');
     document.location = 'login.php';
     </script>";}
 ?>

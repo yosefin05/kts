@@ -3,7 +3,7 @@ include 'koneksi.php';
 
 $email = $_POST['email']; 
 $username = $_POST['username'];
-$password = md5($_POST['password']);
+$password = $_POST['password'];
 $role = $_POST['role'];
 
 $sql = "INSERT INTO `user`(`email`, `username`, `password`, `role`) VALUES ('$email','$username','$password','$role')";;
@@ -18,7 +18,6 @@ if($result){
     alert('Register Failed');
     document.location = 'register.php';
 </script>";
-
-
 }
 ?>
+

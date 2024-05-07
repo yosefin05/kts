@@ -6,13 +6,12 @@
     <body>
         <header>
             <div class="logo">
-                <img src="newlogo.png" width='90px'>
+                <a href="bismillah.php"><img src="newlogo.png" width='90px'></a>
             </div>
             <div class="main">
                 <ul>
-                    <li><a href="login.php">Login</a></li>
-                    <li><a href="register.php">Sign In</a></li>
-                    <li><a href="profil.php">Profile</a></li>                
+                    <li><a href="materi.php">Rumah</a></li> 
+                    <li><a href="news.asp">Tiket Saya</a></li>              
                 </ul>
                 </div>
                 <div class="title">
@@ -28,6 +27,7 @@
     margin:0;
     padding:0;
     font-family: sans-serif;
+    font-size: 17px;
 }
 header{
     background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(bg.jpg);
