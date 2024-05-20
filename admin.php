@@ -21,7 +21,7 @@
         <h3><a href="tabel_tiket.php">View Table Tiket</h3>
     </div>
     <div class="button">
-        <a href="bismillah.php" class="btn1">BACK</a>
+        <a href="bismillah.php" class="btn1">KEMBALI</a>
     </div> 
 </body>
 

@@ -16,7 +16,7 @@
             <th colspan="2">Aksi</th>
         </tr>
     <div class="button">
-        <a href="admin.php" class="btn1">BACK</a>
+        <a href="admin.php" class="btn1">KEMBALI</a>
     </div> 
     <div class="button2">
         <a href="rumah.php" class="btn2">TAMBAHKAN</a>
@@ -35,14 +35,14 @@ while($data= mysqli_fetch_array($query_mysql)){
 
 <tr>
     <td><?php echo $nomor++;?></td>
-    <td><?php echo $data["nama_rumah"];?></td> 
+    <td><?php echo $data["nama"];?></td> 
     <td><?php echo $data["informasi"];?></td>
     <td><?php echo $data["gambar"];?></td>
-    <td><?php echo $data["id_kategori"];?></td>
+    <td><?php echo $data["pulau_id"];?></td>
 
-    <td><span><a href='delet_rumah.php?id_user=<?php echo $data["id_rumah"];?>'>Hapus</a></span></td>
+    <td><span><a href='delete_rumah.php?id_rumah=<?php echo $data["id_rumah"];?>'>Hapus</a></span></td>
     <?php ?>
-    <td><span><a href='edit_rumah.php?id_user=<?php echo $data["id_rumah"];?>'>Edit</a></span></td>
+    <td><span><a href='edit_rumah.php?id_rumah=<?php echo $data["id_rumah"];?>'>Edit</a></span></td>
     <?php }?>
 
 </tr>
@@ -60,7 +60,8 @@ while($data= mysqli_fetch_array($query_mysql)){
         width: 100%;
         font-size: 14px;
         color: black;
-        white-space: nowrap;
+        white-space: normal;
+        word-wrap: break-word;
         text-align: center;
         background-color: whitesmoke;
         margin-top: 7%;

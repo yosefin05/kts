@@ -11,12 +11,12 @@
             <div class="main">
                 <ul>
                     <li><a href="materi.php">Rumah</a></li> 
-                    <li><a href="news.asp">Tiket Saya</a></li>              
+                    <li><a href="tiket.php">Tiket Saya</a></li>              
                 </ul>
-                </div>
-                <div class="title">
-                    <h1>RUMAH ADAT INDONESIA</h1>
-                </div>
+            </div>
+            <div class="title">
+                <h1>RUMAH ADAT INDONESIA</h1>
+            </div>
             </div>
         </header>
     </body>
@@ -37,8 +37,8 @@ header{
 }
 .logo{
     position:fixed;
-    left:15px;
-    top:0;
+    left:20px;
+    top:10px;
 }
 ul{
     float:right;

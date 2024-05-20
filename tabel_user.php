@@ -15,7 +15,7 @@
             <th colspan="2">Aksi</th>
         </tr>
     <div class="button">
-        <a href="admin.php" class="btn1">BACK</a>
+        <a href="admin.php" class="btn1">KEMBALI</a>
     </div> 
     <div class="button2">
         <a href="register.php" class="btn2">TAMBAHKAN</a>

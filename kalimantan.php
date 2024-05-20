@@ -66,7 +66,7 @@
 }
 .button{
     position:absolute;
-    top: 6%;
+    top: 9%;
     left: 5%;
     transform: translate(-50%-50%);
 }

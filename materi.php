@@ -8,33 +8,24 @@
 <body>
      <div class="rumah-adat">
         <h1>Pulau di Indonesia</h1></div>
-        <div class="box-kiri">
-            <a href="sumatera.php"><img src="sumatera.jpg" width="200" height="200">
-            <p><h3>Sumatera</h3></p></a>
-            <p>Sumatra adalah pulau keenam terbesar di dunia yang terletak di Indonesia, dengan luas 473.481 km². Penduduk yang tinggal di pulau ini sekitar 57.940.351 jiwa. Pulau ini dikenal pula dengan nama lain yaitu Pulau Percha, Andalas, atau Suwarnadwipa.</p>
-        </div>
-        <div class="box-tengah">
-            <a href="kalimantan.php"><img src="kalimantan.png" width="200" height="200">
-            <p><h3>Kalimantan</h3></p></a>
-            <p>Kalimantan, atau juga disebut Borneo oleh dunia internasional, adalah pulau terbesar ketiga di dunia yang terletak di sebelah utara Pulau Jawa dan di sebelah barat Pulau Sulawesi. Pulau Kalimantan dibagi menjadi wilayah Indonesia, Malaysia, dan Brunei.</p>        
-        </div>
-        <div class="box-kanan">
-            <a href="sulawesi.php"><img src="sulawesi.png" width="200" height="200">
-            <p><h3>Sulawesi</h3></p>
-            <p>Sulawesi, dahulu pernah dikenal sebagai Celebes adalah sebuah pulau di Indonesia. Sulawesi merupakan salah satu dari empat Kepulauan Sunda Besar dan merupakan pulau terbesar kesebelas di dunia.</p>
-        </div>
-        <div class="box-jawa">
-            <a href="jawa.php"><img src="jawa.jpg" width="200" height="200">
-            <p><h3>Jawa</h3></p></a>
-            <p>Jawa adalah sebuah pulau di Indonesia yang terletak di kepulauan Sunda Besar dan merupakan pulau terluas ke-13 di dunia. Jumlah penduduk di Pulau Jawa sekitar 150 juta. Pulau Jawa dihuni oleh 60% total populasi Indonesia.</p>
-        </div>
-        <div class="box-papua">
-            <a href="papua.php"><img src="papua.png" width="200" height="200">
-            <p><h3>Papua</h3></p></a>
-            <p>Papua, adalah provinsi yang terletak di pesisir utara Papua, Indonesia. Provinsi Papua sebelumnya bernama Irian Barat dan Irian Jaya yang mencakup seluruh Tanah Papua bekas Keresidenan Nugini Barat. Ibu kota Papua berada di Kota Jayapura, yang berbatasan langsung dengan negara Papua Nugini.</p>
-        </div>
+        <div class="box">
+        <?php
+            //select tabel pulau dari database
+            include 'koneksi.php';
+            $result = mysqli_query($mysqli, "SELECT * FROM pulau") or die (mysqli_error());
+
+            while($data = mysqli_fetch_array($result)){
+                ?>
+            <div class="box">
+                <h3><?php echo $data['pulau']; ?></h3>
+                <p><?php echo $data['informasi']; ?></p>
+                <div class="button"></div>
+                <a href="tket.php" class="btn">Dapatkan Tiket</a>
+            </div>
+        <?php } ?>
+
      <div class="button">
-        <a href="user.php" class="btn1">BACK</a>
+        <a href="user.php" class="btn1">KEMBALI</a>
     </div> 
 </body>
 </html>
@@ -50,26 +41,12 @@
 a{
     color: white;
 }
-.box-kiri, .box-tengah, .box-kanan, .box-jawa, .box-papua {
-    width: 235px;
-    height: 450px;
-    background-color:#070F2B;
+.box {
+    background-color: whitesmoke;
+    border: 4px solid #070F2B;
+    padding: 20px;
+    box-sizing: border-box;
     text-align: center;
-    color: white;
-    padding: 20px 70px;
-    margin: 70px 15px 15px 40px;
-    border-radius: 20px;
-    float: left;
-}
-.box-jawa, .box-papua {
-    width: 235px;
-    height: 450px;
-    background-color:#070F2B;
-    text-align: center;
-    color: white;
-    padding: 20px 70px;
-    border-radius: 20px;
-    align-items: center;
 }
 .button{
     position:absolute;

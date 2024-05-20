@@ -10,6 +10,7 @@
         <a href="bismillah.php" class="btn1">BACK</a>
     </div> 
     <div class="title">
+        <img src="photo.jpg" width="200"height="200">
         <p>Haloo... Perkenalkan nama saya Yosefin Kurniawati Tanto kelas X SIJA 1.</p>
         <p>Website ini dibuat untuk penilaian Uji Kenaikan Level.</p>
         <a href='https://www.instagram.com/yosefin_kt' target='_blank'>Instagram Saya</a>
@@ -21,6 +22,9 @@
 *{
     background-color: #070F2B;
     font-family: sans-serif;
+}
+img{
+    align-items: left;
 }
 .title {
     text-align: center;

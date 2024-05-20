@@ -12,7 +12,7 @@
                 <ul>
                     <li><a href="login.php">Login</a></li>
                     <li><a href="register.php">Sign In</a></li>
-                    <li><a href="profil.php">Profile</a></li>                
+                    <li><a href="profil.php">Contact Us</a></li>                
                 </ul>
                 </div>
                 <div class="title">
@@ -37,13 +37,13 @@ header{
 }
 .logo{
     position:fixed;
-    left:15px;
-    top:0;
+    left:20px;
+    top:10px;
 }
 ul{
     float:right;
     list-style-type: none;
-    margin-top: 25px;
+    margin-top: 25px;   
 }
 ul li{
     display: inline-block;
@@ -65,11 +65,11 @@ ul li a:hover{
     margin: auto; 
 }
 .title {
-position: absolute;
-text-align: center;
-top: 43%;
-left:27%;
-transform: translate(-50%-50%);
+    position: absolute;
+    text-align: center;
+    top: 43%;
+    left:27%;
+    transform: translate(-50%-50%);
 }
 .title h1{
     font-family: poppins;

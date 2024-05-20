@@ -13,7 +13,7 @@ if($result){
         </script>";
 }else{
     echo "<script>
-    alert('Register Failed');
+    alert('Input Data Failed');
     document.location = 'tabel_kategori.php';
 </script>";
 }

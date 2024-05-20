@@ -9,13 +9,15 @@
     <table border="1">
         <tr>
             <th>No</th>
-            <th>Tanggal Pesan</th>
-            <th>Metode Pembayaran</th>
-            <th>User</th>
+            <th>Username</th>
+            <th>No Telepon</th>
+            <th>Provinsi</th>
+            <th>Jumlha</th>
+            <th>Tanggal</th>
             <th colspan="2">Aksi</th>
         </tr>
     <div class="button">
-        <a href="admin.php" class="btn1">BACK</a>
+        <a href="admin.php" class="btn1">KEMBALI</a>
     </div> 
     <div class="button2">
         <a href="tiket.php" class="btn2">TAMBAHKAN</a>
@@ -26,19 +28,22 @@ $nomor=1;
 
 $mysqli = new mysqli('localhost', 'root', '', 'rumah_adat');
 
-$query_mysql=mysqli_query($mysqli, "SELECT * FROM kategori ") or die (mysqli_error());
+$query_mysql=mysqli_query($mysqli, "SELECT * FROM tiket ") or die (mysqli_error());
 
 while($data= mysqli_fetch_array($query_mysql)){
 ?>
 
 <tr>
     <td><?php echo $nomor++;?></td>
-    <td><?php echo $data["pulau"];?></td> 
+    <td><?php echo $data["username"];?></td> 
+    <td><?php echo $data["telepon"];?></td>
     <td><?php echo $data["provinsi"];?></td>
+    <td><?php echo $data["jumlah"];?></td>
+    <td><?php echo $data["tanggal"];?></td>
 
-    <td><span><a href='delet_kategori.php?id_user=<?php echo $data["id_kategori"];?>'>Hapus</a></span></td>
+    <td><span><a href='delete_tiket.php?id_tiket=<?php echo $data["id_tiket"];?>'>Hapus</a></span></td>
     <?php ?>
-    <td><span><a href='edit_kategori.php?id_user=<?php echo $data["id_kategori"];?>'>Edit</a></span></td>
+    <td><span><a href='edit_tiket.php?id_tiket=<?php echo $data["id_tiket"];?>'>Edit</a></span></td>
     <?php }?>
 
 </tr>
