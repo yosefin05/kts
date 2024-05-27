@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>            
-    <a href="bismillah.php" class="btn1">KEMBALI</a>
+    <a href="index.php" class="btn1">KEMBALI</a>
     <div class="container">
         <header>
             <h1>Profil Saya</h1>
