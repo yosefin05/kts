@@ -6,12 +6,12 @@
     <body>
         <header>
             <div class="logo">
-                <a href="bismillah.php"><img src="newlogo.png" width='90px'></a>
+                <a href="index.php"><img src="newlogo.png" width='90px'></a>
             </div>
             <div class="main">
                 <ul>
-                    <li><a href="materi.php">Rumah</a></li> 
-                    <li><a href="tiket.php">Tiket Saya</a></li>              
+                    <li><a href="roemahku.php">Rumah</a></li> 
+                    <li><a href="pesan.php">Beli Tiket</a></li>              
                 </ul>
             </div>
             <div class="title">
@@ -20,6 +20,9 @@
             </div>
         </header>
     </body>
+    <footer>
+        &copy; 2024 | Yosefin KT
+    </footer>
 </html>
 
 <style>
@@ -75,5 +78,28 @@ transform: translate(-50%-50%);
     font-family: poppins;
     color: white;
     font-size: 50px;
+}
+.button {
+    text-align: center;
+    margin-top: 20px;
+}
+.btn1, .btn2 {
+    border: 1px solid white;
+    padding: 5px 15px;
+    color: white;
+    text-decoration: none;
+    transition: 0.6s ease;
+    margin: 10px;
+    display: inline-block;
+}
+.btn1:hover, .btn2:hover {
+    background-color: rgba(173, 173, 173, 0.377);
+    color: white;
+}
+footer {
+    background-color: #070F2B;
+    color: white;
+    text-align: center;
+    padding: 10px;
 }
 </style>

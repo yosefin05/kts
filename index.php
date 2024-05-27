@@ -12,7 +12,7 @@
                 <ul>
                     <li><a href="login.php">Login</a></li>
                     <li><a href="register.php">Sign In</a></li>
-                    <li><a href="profil.php">Contact Us</a></li>                
+                    <li><a href="profil.php">About Me</a></li>                
                 </ul>
                 </div>
                 <div class="title">
@@ -20,7 +20,11 @@
                 </div>
             </div>
         </header>
+        <footer>
+            &copy; 2024 | Yosefin KT
+        </footer>
     </body>
+    
 </html>
 
 <style>
@@ -75,5 +79,11 @@ ul li a:hover{
     font-family: poppins;
     color: white;
     font-size: 50px;
+}
+footer {
+    background-color: #070F2B;
+    color: white;
+    text-align: center;
+    padding: 10px;
 }
 </style>

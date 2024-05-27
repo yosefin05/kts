@@ -9,10 +9,10 @@
     <table border="1">
         <tr>
             <th>No</th>
+            <th>Pulau</th>            
             <th>Nama Rumah</th>
             <th>Informasi</th>
             <th>Gambar</th>
-            <th>Pulau</th>
             <th colspan="2">Aksi</th>
         </tr>
     <div class="button">
@@ -28,17 +28,20 @@ $nomor=1;
 
 $mysqli = new mysqli('localhost', 'root', '', 'rumah_adat');
 
-$query_mysql=mysqli_query($mysqli, "SELECT * FROM rumah ") or die (mysqli_error());
+$query_mysql=mysqli_query($mysqli, "SELECT pulau.pulau, rumah.nama, rumah.informasi, rumah.gambar, rumah.harga 
+FROM rumah
+JOIN pulau ON pulau.id_pulau = rumah.id_pulau;") or die (mysqli_error());
 
 while($data= mysqli_fetch_array($query_mysql)){
 ?>
 
 <tr>
     <td><?php echo $nomor++;?></td>
+    <td><?php echo $data["pulau"];?></td>    
     <td><?php echo $data["nama"];?></td> 
     <td><?php echo $data["informasi"];?></td>
     <td><?php echo $data["gambar"];?></td>
-    <td><?php echo $data["pulau_id"];?></td>
+
 
     <td><span><a href='delete_rumah.php?id_rumah=<?php echo $data["id_rumah"];?>'>Hapus</a></span></td>
     <?php ?>
@@ -70,7 +73,6 @@ while($data= mysqli_fetch_array($query_mysql)){
         position:absolute;
         top: 5%;
         left: 5%;
-        transform: translate(-50%-50%);
         display: inline-block;
     }
     .btn1{

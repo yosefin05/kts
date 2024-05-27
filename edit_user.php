@@ -18,10 +18,11 @@ $role = $user_data['role'];
 }
 ?>
 
+<div class="button2">
+    <a href="tabel_user.php" class="btn2">KEMBALI</a>
+</div> 
 <div class="container">   
-    <h1>Edit User</h1>
-    <a href="tabel_user.php" class="btn2">KEMBALI</a>    
-<div class="button2">  
+    <h1>Edit User</h1> 
     <form method="POST" action="edit_user_proses.php">
 </div> 
     <table>

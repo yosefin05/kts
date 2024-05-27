@@ -5,22 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pembelian Tiket</title>
 </head>
-<div class="button2">
-    <a href="user.php" class="btn2">KEMBALI</a>
-</div> 
+
 <body>
+    <a href="roemahku.php" class="btn2">KEMBALI</a>
     <div class="container">
         <h1>Pembelian Tiket</h1>
         <form action="tiket_proses.php" method="post" name="formPembelian">
             <table>
-                <tr>
-                    <td>Username</td>
-                    <td><input type="text" name="username" required></td>
-                </tr>
-                <tr>
-                    <td>Nomor Telepon</td>
-                    <td><input type="text" name="telepon" required></td>
-                </tr>
                 <tr>
                     <td>Provinsi</td>
                     <td>
@@ -113,7 +104,6 @@ td {
     text-align: left;
 }
 
-input[type="text"],
 input[type="number"],
 input[type="date"],
 select {
@@ -140,21 +130,17 @@ select {
 .btn:hover {
     background-color: #070F2B;
 }
-.button2{
-    position:absolute;
-    top: 5%;
-    left: 5%;
-    transform: translate(-50%-50%);
-    display: inline-block;
-}
 
 .btn2{
     border: 1px solid;
-    padding: 5px 20px;
+    padding: 5px 15px;
     color: white;
     text-decoration: none;
     transition: 0.6s ease;
     margin: 10px;
+    position: absolute;
+    top: 11%;
+    left: 10px;
 }
 
 .btn2:hover{

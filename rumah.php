@@ -1,44 +1,32 @@
-<?php
-include 'koneksi.php';
-
-//kalau tidak ada id di query string
-if(!isset($_GET['id_pulau'])){
-    header('location:index.php');
-}
-$id_pulau = $_GET['id_pulau'];
-
-//fetech user data based on id
-$result = mysqli_query($mysqli,"SELECT * FROM pulau WHERE id_pulau=$id_pulau");
-
-while($user_data = mysqli_fetch_array($result)){
-$pulau = $user_data['pulau'];
-$informasi = $user_data['informasi']; 
-}
-?>
-
 <body>
 <div class="button2">
-    <a href="tabel_kategori.php" class="btn2">KEMBALI</a>
+    <a href="tabel_rumah.php" class="btn2">BACK</a>
 </div> 
 <div class="container">
-    <h1>Kategori</h1>
-        <form method="POST" action="edit_kategori_proses.php" >
+    <h1>Rumah</h1>
+        <form action="rumah_proses.php" method="POST">
         <table>
             <tr>
-                <td>Pulau</td>
-                <td><input type="text" name="pulau" value="<?php echo $pulau;?>"></td>
+                <td>Nama Rumah</td>
+                <td><input type="text" name="nama" required></td>
             </tr>
             <tr>
                 <td>Informasi</td>
-                <td><input type="text" name="informasi" value="<?php echo $informasi;?>"></td>
+                <td><input type="text" name="informasi" required></td>
             </tr>
             <tr>
-                <td><input type="hidden" name="id_pulau"value=<?php echo $_GET['id_pulau'];?>></td>
-                <td><input type="submit" name="simpan"value="Simpan"></td>
+                <td>Gambar</td>
+                <td><input type="text" name="gambar" required></td>
             </tr>
-        <h5>Gunakan huruf kapital pada awal kata.</h5>    
+            <tr>
+                <td>Pulau</td>
+                <td><input type="text" name="pulau" required></td>
+            </tr>
         </table>          
-    </form>
+        <h5>Gunakan huruf kapital pada awal kata.</h5>    
+            <button type="submit" class="btn">Submit</button>
+            <a href="tabel_rumah.php"></a>
+        </form>
 </div>
 <style>
 body {
@@ -84,10 +72,10 @@ input[type="text"] {
 h5 {
     color: #666;
     font-size: 0.9em;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-input[type="submit"] {
+.btn {
     background-color: #070F2B;
     color: white;
     padding: 10px 20px;
@@ -100,9 +88,8 @@ input[type="submit"] {
     transition: 0.3s ease;
 }
 
-input[type="submit"] {
+.btn:hover {
     background-color: #070F2B;
-
 }
 
 a{
@@ -114,7 +101,7 @@ a{
 }
 
 a:hover {
-    color: #070F2B;
+    color: #45a049;
 }
 .button2{
     position:absolute;
@@ -123,6 +110,7 @@ a:hover {
     transform: translate(-50%-50%);
     display: inline-block;
 }
+
 .btn2{
     border: 1px solid;
     padding: 5px 20px;
@@ -131,6 +119,7 @@ a:hover {
     transition: 0.6s ease;
     margin: 10px;
 }
+
 .btn2:hover{
     background-color: rgba(173, 173, 173, 0.377);
     color: white;

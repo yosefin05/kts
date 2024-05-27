@@ -21,7 +21,7 @@
         <h3><a href="tabel_tiket.php">View Table Tiket</h3>
     </div>
     <div class="button">
-        <a href="bismillah.php" class="btn1">KEMBALI</a>
+        <a href="index.php" class="btn1">KEMBALI</a>
     </div> 
 </body>
 
@@ -41,7 +41,7 @@
     color: white;
     text-decoration-color:white;
     padding: 100px 85px;
-    margin: 70px 15px 15px 40px;
+    margin: 90px 15px 15px 40px;
     border-radius: 20px;
     float: left;
 }

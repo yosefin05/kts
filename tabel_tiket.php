@@ -9,10 +9,8 @@
     <table border="1">
         <tr>
             <th>No</th>
-            <th>Username</th>
-            <th>No Telepon</th>
             <th>Provinsi</th>
-            <th>Jumlha</th>
+            <th>Jumlah</th>
             <th>Tanggal</th>
             <th colspan="2">Aksi</th>
         </tr>
@@ -20,7 +18,7 @@
         <a href="admin.php" class="btn1">KEMBALI</a>
     </div> 
     <div class="button2">
-        <a href="tiket.php" class="btn2">TAMBAHKAN</a>
+        <a href="pesan.php" class="btn2">TAMBAHKAN</a>
     </div> 
 <?php
 
@@ -36,7 +34,6 @@ while($data= mysqli_fetch_array($query_mysql)){
 <tr>
     <td><?php echo $nomor++;?></td>
     <td><?php echo $data["username"];?></td> 
-    <td><?php echo $data["telepon"];?></td>
     <td><?php echo $data["provinsi"];?></td>
     <td><?php echo $data["jumlah"];?></td>
     <td><?php echo $data["tanggal"];?></td>

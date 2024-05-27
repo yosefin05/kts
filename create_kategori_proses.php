@@ -10,6 +10,7 @@ if($result){
             alert('Input Data successfully');
             document.location = 'tabel_kategori.php';
         </script>";
+        $last_id_pulau= $mysqli->insert_id;
 }else{
     echo "<script>
     alert('Register Failed');
