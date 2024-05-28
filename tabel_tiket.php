@@ -9,6 +9,7 @@
     <table border="1">
         <tr>
             <th>No</th>
+            <th>Nama</th>
             <th>Provinsi</th>
             <th>Jumlah</th>
             <th>Tanggal</th>
@@ -26,24 +27,24 @@ $nomor=1;
 
 $mysqli = new mysqli('localhost', 'root', '', 'rumah_adat');
 
-$query_mysql=mysqli_query($mysqli, "SELECT * FROM tiket ") or die (mysqli_error());
+$query_mysql=mysqli_query($mysqli, "SELECT tiket.id_tiket, user.username, rumah.nama, tiket.jumlah, tiket.tanggal 
+FROM tiket JOIN user ON tiket.id_user = user.id_user JOIN rumah ON tiket.id_rumah = rumah.id_rumah;") or die (mysqli_error());
 
 while($data= mysqli_fetch_array($query_mysql)){
 ?>
 
 <tr>
     <td><?php echo $nomor++;?></td>
-    <td><?php echo $data["username"];?></td> 
-    <td><?php echo $data["provinsi"];?></td>
+    <td><?php echo $data["username"];?></td>
+    <td><?php echo $data["rumah"];?></td>
     <td><?php echo $data["jumlah"];?></td>
     <td><?php echo $data["tanggal"];?></td>
 
     <td><span><a href='delete_tiket.php?id_tiket=<?php echo $data["id_tiket"];?>'>Hapus</a></span></td>
     <?php ?>
     <td><span><a href='edit_tiket.php?id_tiket=<?php echo $data["id_tiket"];?>'>Edit</a></span></td>
-    <?php }?>
-
-</tr>
+</tr>    
+<?php }?>
 </table>
 
 </body>

@@ -123,6 +123,6 @@
     </div>
 </body>
 <footer>
-    &copy; 2024 | Yosefin KT
+    &copy; 2024 Rumah Adat Indonesia | Yosefin KT
 </footer>
 </html>

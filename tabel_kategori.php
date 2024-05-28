@@ -10,7 +10,6 @@
         <tr>
             <th>No</th>
             <th>Pulau</th>
-            <th>Informasi</th>
             <th colspan="2">Aksi</th>
         </tr>
     <div class="button">
@@ -32,9 +31,7 @@ while($data= mysqli_fetch_array($query_mysql)){
 
 <tr>
     <td><?php echo $nomor++;?></td>
-    <td><?php echo $data["pulau"];?></td> 
-    <td><?php echo $data["informasi"];?></td> 
-    
+    <td><?php echo $data["pulau"];?></td>     
 
     <td><span><a href='delete_kategori.php?id_pulau=<?php echo $data["id_pulau"];?>'>Hapus</a></span></td>
     <?php ?>

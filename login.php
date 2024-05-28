@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="button2">
-        <a href="bismillah.php" class="btn2">KEMBALI</a>
+        <a href="index.php" class="btn2">KEMBALI</a>
     </div> 
     <div class="container">
         <h1>Login</h1><br>

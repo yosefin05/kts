@@ -11,11 +11,10 @@ $id_rumah = $_GET['id_rumah'];
 $result = mysqli_query($mysqli,"SELECT * FROM rumah WHERE id_rumah=$id_rumah");
 
 while($user_data = mysqli_fetch_array($result)){
-$id_pulau = $user_data['id_pulau']; 
 $nama = $user_data['nama'];
 $informasi = $user_data['informasi']; 
 $gambar = $user_data['gambar']; 
-
+$id_pulau = $user_data['id_pulau']; 
 }
 ?>
 
@@ -26,10 +25,35 @@ $gambar = $user_data['gambar'];
 <div class="container">
     <h1>Rumah</h1>
         <form method="POST" action="edit_rumah_proses.php" >
-        <table>            
-            <tr>
-                <td>Pulau</td>
-                <td><input type="text" name="pulau" value="<?php echo $pulau;?>"></td>
+        <table>  
+        <tr>
+            <input type="hidden" name="id_rumah" value="id_rumah">
+        </tr>          
+        <tr>
+            <td>Pulau</td>
+            <td><select name="pulau">
+            <?php 
+            include "koneksi.php";
+            $sql = "SELECT * FROM `pulau`";
+            $all_pulau = mysqli_query($mysqli,$sql);
+                // use a while loop to fetch data 
+                // from the $all_categories variable 
+                // and individually display as an option
+                while ($pulau = mysqli_fetch_array(
+                        $all_pulau,MYSQLI_ASSOC)):; 
+            ?>
+                <option value="<?php echo $pulau["id_pulau"];
+                    // The value we usually set is the primary key
+                ?>">
+                    <?php echo $pulau["pulau"];
+                        // To show the category name to the user
+                    ?>
+                </option>
+            <?php 
+                endwhile; 
+                // While loop must be terminated
+            ?>
+            </select></td>
             </tr>
             <tr>
                 <td>Rumah</td>
@@ -85,7 +109,9 @@ td {
     padding: 10px;
 }
 
-input[type="text"] {
+input[type="text"]
+input[type="img"]
+select{
     width: 100%;
     padding: 8px;
     margin-top: 5px;

@@ -2,9 +2,8 @@
 include 'koneksi.php';
 
 $pulau = $_POST['pulau']; 
-$provinsi = $_POST['provinsi'];
 
-$sql = "INSERT INTO `kategori`(`pulau`, `provinsi`) VALUES ('$pulau','$provinsi')";;
+$sql = "INSERT INTO `kategori`(`id_pulau`) VALUES ('$pulau')";;
 $result = mysqli_query($mysqli,$sql);
 if($result){
     echo "<script>

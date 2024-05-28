@@ -13,6 +13,7 @@
             <th>Nama Rumah</th>
             <th>Informasi</th>
             <th>Gambar</th>
+            <th>Harga</th>
             <th colspan="2">Aksi</th>
         </tr>
     <div class="button">
@@ -24,35 +25,35 @@
 
 <?php
 
-$nomor=1;
+$nomor = 1;
 
 $mysqli = new mysqli('localhost', 'root', '', 'rumah_adat');
 
-$query_mysql=mysqli_query($mysqli, "SELECT pulau.pulau, rumah.nama, rumah.informasi, rumah.gambar, rumah.harga 
+$query_mysql = mysqli_query($mysqli, "SELECT rumah.id_rumah, pulau.pulau, rumah.nama, rumah.informasi, rumah.gambar, rumah.harga 
 FROM rumah
-JOIN pulau ON pulau.id_pulau = rumah.id_pulau;") or die (mysqli_error());
+JOIN pulau ON pulau.id_pulau = rumah.id_pulau;") or die (mysqli_error($mysqli));
 
-while($data= mysqli_fetch_array($query_mysql)){
+while($data = mysqli_fetch_array($query_mysql)){
 ?>
 
 <tr>
-    <td><?php echo $nomor++;?></td>
-    <td><?php echo $data["pulau"];?></td>    
-    <td><?php echo $data["nama"];?></td> 
-    <td><?php echo $data["informasi"];?></td>
-    <td><?php echo $data["gambar"];?></td>
-
-
-    <td><span><a href='delete_rumah.php?id_rumah=<?php echo $data["id_rumah"];?>'>Hapus</a></span></td>
-    <?php ?>
-    <td><span><a href='edit_rumah.php?id_rumah=<?php echo $data["id_rumah"];?>'>Edit</a></span></td>
-    <?php }?>
-
+    <td><?php echo $nomor++; ?></td>
+    <td><?php echo $data["pulau"]; ?></td>    
+    <td><?php echo $data["nama"]; ?></td> 
+    <td><?php echo $data["informasi"]; ?></td>
+    <td><?php echo $data["gambar"]; ?></td>
+    <td><?php echo $data["harga"]; ?></td>
+    <td><span><a href='delete_rumah.php?id_rumah=<?php echo $data["id_rumah"]; ?>'>Hapus</a></span></td>
+    <td><span><a href='edit_rumah.php?id_rumah=<?php echo $data["id_rumah"]; ?>'>Edit</a></span></td>
 </tr>
+
+<?php } ?>
+
 </table>
 
 </body>
 </html>
+
 <style>
     body{
         margin: 40px;

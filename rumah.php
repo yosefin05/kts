@@ -20,7 +20,33 @@
             </tr>
             <tr>
                 <td>Pulau</td>
-                <td><input type="text" name="pulau" required></td>
+                <td><select name="pulau">
+            <?php 
+            include "koneksi.php";
+            $sql = "SELECT * FROM `pulau`";
+            $all_pulau = mysqli_query($mysqli,$sql);
+                // use a while loop to fetch data 
+                // from the $all_categories variable 
+                // and individually display as an option
+                while ($pulau = mysqli_fetch_array(
+                        $all_pulau,MYSQLI_ASSOC)):; 
+            ?>
+                <option value="<?php echo $pulau["id_pulau"];
+                    // The value we usually set is the primary key
+                ?>">
+                    <?php echo $pulau["pulau"];
+                        // To show the category name to the user
+                    ?>
+                </option>
+            <?php 
+                endwhile; 
+                // While loop must be terminated
+            ?>
+            </select></td>
+            </tr>
+            <tr>
+                <td>Harga</td>
+                <td><input type="text" name="harga" required></td>
             </tr>
         </table>          
         <h5>Gunakan huruf kapital pada awal kata.</h5>    

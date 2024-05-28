@@ -13,43 +13,40 @@
         <form action="tiket_proses.php" method="post" name="formPembelian">
             <table>
                 <tr>
-                    <td>Provinsi</td>
+                    <td>Nama</td>
                     <td>
-                        <select name="provinsi" required>
-                            <option disabled selected>Pilih</option>
-                            <option value="Aceh">Aceh</option>
-                            <option value="Sumatera Utara">Sumatera Utara</option>
-                            <option value="Sumatera Barat">Sumatera Barat</option>
-                            <option value="Riau">Riau</option>
-                            <option value="Jambi">Jambi</option>
-                            <option value="Sumatera Selatan">Sumatera Selatan</option>
-                            <option value="Bengkulu">Bengkulu</option>
-                            <option value="Lampung">Lampung</option>
-                            <option value="Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
-                            <option value="Kepulauan Riau">Kepulauan Riau</option>
-                            <option value="Banten">Banten</option>
-                            <option value="Jawa Barat">Jawa Barat</option>
-                            <option value="Jawa Tengah">Jawa Tengah</option>
-                            <option value="DI Yogyakarta">DI Yogyakarta</option>
-                            <option value="Jawa Timur">Jawa Timur</option>
-                            <option value="Kalimantan Barat">Kalimantan Barat</option>
-                            <option value="Kalimantan Tengah">Kalimantan Tengah</option>
-                            <option value="Kalimantan Selatan">Kalimantan Selatan</option>
-                            <option value="Kalimantan Timur">Kalimantan Timur</option>
-                            <option value="Kalimantan Utara">Kalimantan Utara</option>
-                            <option value="Sulawesi Utara">Sulawesi Utara</option>
-                            <option value="Sulawesi Tengah">Sulawesi Tengah</option>
-                            <option value="Sulawesi Selatan">Sulawesi Selatan</option>
-                            <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
-                            <option value="Gorontalo">Gorontalo</option>
-                            <option value="Sulawesi Barat">Sulawesi Barat</option>
-                            <option value="Papua">Papua</option>
-                            <option value="Papua Barat">Papua Barat</option>
-                            <option value="Papua Tengah">Papua Tengah</option>
-                            <option value="Papua Pegunungan">Papua Pegunungan</option>
-                            <option value="Papua Selatan">Papua Selatan</option>
+                        <select name="username" required>
+                            <?php 
+                            include "koneksi.php";
+                            $sql = "SELECT id_user, username FROM user";
+                            $all_users = mysqli_query($mysqli, $sql);
+                            while ($username = mysqli_fetch_array($all_users, MYSQLI_ASSOC)):; 
+                            ?>
+                                <option value="<?php echo $user["id_user"]; ?>">
+                                    <?php echo $username["username"]; ?>
+                                </option>
+                            <?php 
+                            endwhile; 
+                            ?>
                         </select>
                     </td>
+                </tr>
+                <tr>
+                    <td>Provinsi</td>
+                    <td><select name="rumah">
+                        <?php 
+                        $sql = "SELECT * FROM rumah";
+                        $all_rumah = mysqli_query($mysqli, $sql);
+                        while ($rumah = mysqli_fetch_array($all_rumah, MYSQLI_ASSOC)):; 
+                        ?>
+                            <option value="<?php echo $rumah["id_rumah"]; ?>">
+                                <?php echo $rumah["nama"]; ?>
+                            </option>
+                        <?php 
+                        endwhile; 
+                        ?>
+                        </select>
+                    </td>   
                 </tr>
                 <tr>
                     <td>Jumlah Tiket</td>
@@ -106,6 +103,7 @@ td {
 
 input[type="number"],
 input[type="date"],
+input[type="text"],
 select {
     width: 100%;
     padding: 8px;
@@ -147,4 +145,5 @@ select {
     background-color: rgba(173, 173, 173, 0.377);
     color: white;
 }
+
 </style>

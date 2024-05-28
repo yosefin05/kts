@@ -24,7 +24,7 @@
         </div>
     </div>
     <footer>
-        <p>&copy; 2024 | Yosefin KT</p>
+        &copy; 2024 Rumah Adat Indonesia | Yosefin KT
     </footer>
 </body>
 </html>

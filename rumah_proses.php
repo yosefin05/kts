@@ -4,19 +4,21 @@ include 'koneksi.php';
 $nama = $_POST['nama']; 
 $informasi = $_POST['informasi'];
 $gambar = $_POST['gambar'];
-$last_id_pulau = $_POST['id_pulau'];
+$pulau = $_POST['pulau'];
+$harga = $_POST['harga'];
 
-$sql = "INSERT INTO `rumah`(`nama`, `informasi`, `gambar`, `id_pulau`) VALUES ('$nama','$informasi','$gambar','$last_id_pulau')";
+
+$sql = "INSERT INTO `rumah`(`nama`, `informasi`, `gambar`, `id_pulau`, `harga`) VALUES ('$nama','$informasi','$gambar','$pulau','$harga')";
 $result = mysqli_query($mysqli,$sql);
 if($result){
     echo "<script>
-            alert('Register successfully');
-            document.location = 'tabel_rumah.php';
+            alert('Input data successfully');
+            document.location = 'roemahku.php';
         </script>";
 }else{
     echo "<script>
-    alert('Register Failed');
-    document.location = 'rumah.php';
+    alert('Input data Failed');
+    document.location = 'pesan.php';
 </script>";
 }
 ?>

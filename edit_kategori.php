@@ -12,7 +12,6 @@ $result = mysqli_query($mysqli,"SELECT * FROM pulau WHERE id_pulau=$id_pulau");
 
 while($user_data = mysqli_fetch_array($result)){
 $pulau = $user_data['pulau'];
-$informasi = $user_data['informasi']; 
 }
 ?>
 
@@ -27,10 +26,6 @@ $informasi = $user_data['informasi'];
             <tr>
                 <td>Pulau</td>
                 <td><input type="text" name="pulau" value="<?php echo $pulau;?>"></td>
-            </tr>
-            <tr>
-                <td>Informasi</td>
-                <td><input type="text" name="informasi" value="<?php echo $informasi;?>"></td>
             </tr>
             <tr>
                 <td><input type="hidden" name="id_pulau"value=<?php echo $_GET['id_pulau'];?>></td>

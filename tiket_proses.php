@@ -1,23 +1,23 @@
 <?php
 include 'koneksi.php';
 
-$username = $_POST['username'];
-$telepon = $_POST['telepon'];
-$provinsi = $_POST['provinsi'];
+$username = $_POST['username']; 
+$rumah = $_POST['rumah'];
 $jumlah = $_POST['jumlah'];
 $tanggal = $_POST['tanggal'];
 
-$sql = "INSERT INTO `tiket`(`username`, `telepon`, `provinsi`,`jumlah`,`tanggal`) VALUES ('$username','$telepon','$provinsi','$jumlah','$tanggal')";;
+
+$sql = "INSERT INTO `tiket`(`id_user`, `id_rumah`, `jumlah`, `tanggal`) VALUES ('$username','$rumah','$jumlah','$tanggal')";
 $result = mysqli_query($mysqli,$sql);
 if($result){
     echo "<script>
-            alert('Pembelian Berhasil');
-            document.location = 'user.php';
+            alert('Input data successfully');
+            document.location = 'tabel_rumah.php';
         </script>";
 }else{
     echo "<script>
-    alert('Pembelian Gagal');
-    document.location = 'tiket.php';
+    alert('Input data Failed');
+    document.location = 'rumah.php';
 </script>";
 }
 ?>
