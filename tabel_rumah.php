@@ -27,8 +27,7 @@
 
 $nomor = 1;
 
-$mysqli = new mysqli('localhost', 'root', '', 'rumah_adat');
-
+include 'koneksi.php';
 $query_mysql = mysqli_query($mysqli, "SELECT rumah.id_rumah, pulau.pulau, rumah.nama, rumah.informasi, rumah.gambar, rumah.harga 
 FROM rumah
 JOIN pulau ON pulau.id_pulau = rumah.id_pulau;") or die (mysqli_error($mysqli));

@@ -25,7 +25,7 @@
 
 $nomor=1;
 
-$mysqli = new mysqli('localhost', 'root', '', 'rumah_adat');
+include 'koneksi.php';
 
 $query_mysql=mysqli_query($mysqli, "SELECT tiket.id_tiket, user.username, rumah.nama, tiket.jumlah, tiket.tanggal 
 FROM tiket JOIN user ON tiket.id_user = user.id_user JOIN rumah ON tiket.id_rumah = rumah.id_rumah;") or die (mysqli_error());

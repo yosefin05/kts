@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli('localhost', 'root', '', 'rumah_adat');
+include 'koneksi.php';
     $id=$_GET["id_user"];
 
     $result= mysqli_query($mysqli, "DELETE FROM user WHERE id_user='$id'");

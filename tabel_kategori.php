@@ -22,7 +22,7 @@
 
 $nomor=1;
 
-$mysqli = new mysqli('localhost', 'root', '', 'rumah_adat');
+include 'koneksi.php';
 
 $query_mysql=mysqli_query($mysqli, "SELECT * FROM pulau") or die (mysqli_error());
 
