@@ -1,27 +1,26 @@
 <?php
-include("koneksi.php"); 
+include 'koneksi.php';
 
-if (isset($_GET['id_tiket'])) {
+// Cek apakah ada ID yang dikirim melalui URL
+if(isset($_GET['id_tiket'])){
     $id_tiket = $_GET['id_tiket'];
 
-    // Periksa apakah id_tiket ada di database
-    $check_tiket = mysqli_query($mysqli, "SELECT * FROM tiket WHERE id_tiket='$id_tiket'");
-    
-    if (mysqli_num_rows($check_tiket) > 0) {
-        // Hapus data terkait di tabel tiket
-        $delete_tiket = mysqli_query($mysqli, "DELETE FROM tiket WHERE id_tiket='$id_tiket'");
+    // Buat query untuk menghapus data tiket berdasarkan ID
+    $query = "DELETE FROM tiket WHERE id_tiket='$id_tiket'";
+    $result = mysqli_query($mysqli, $query);
 
-        if ($delete_tiket) {
-            // Redirect ke halaman utama setelah penghapusan
-            header("Location: tabel_tiket.php");
-            exit();
-        } else {
-            echo "Error deleting record in tiket: " . mysqli_error($mysqli);
-        }
+    // Cek apakah query berhasil
+    if($result){
+        // Redirect kembali ke halaman admin jika berhasil
+        header("Location: admin.php");
+        exit();
     } else {
-        echo "Record with id_tiket $id_tiket does not exist.";
+        // Tampilkan pesan error jika gagal
+        echo "Error deleting record: " . mysqli_error($mysqli);
     }
 } else {
-    echo "ID Tiket not provided.";
+    // Redirect ke halaman admin jika tidak ada ID yang dikirim
+    header("Location: admin.php");
+    exit();
 }
 ?>

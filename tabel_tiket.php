@@ -10,8 +10,10 @@
         <tr>
             <th>No</th>
             <th>Nama</th>
-            <th>Provinsi</th>
+            <th>Rumah</th>
             <th>Jumlah</th>
+            <th>Harga</th>
+            <th>Total Harga</th>
             <th>Tanggal</th>
             <th colspan="2">Aksi</th>
         </tr>
@@ -27,8 +29,9 @@ $nomor=1;
 
 include 'koneksi.php';
 
-$query_mysql=mysqli_query($mysqli, "SELECT tiket.id_tiket, user.username, rumah.nama, tiket.jumlah, tiket.tanggal 
-FROM tiket JOIN user ON tiket.id_user = user.id_user JOIN rumah ON tiket.id_rumah = rumah.id_rumah;") or die (mysqli_error());
+$query_mysql=mysqli_query($mysqli, "SELECT user.username, rumah.nama, rumah.harga, tiket.jumlah, tiket.tanggal, (rumah.harga * tiket.jumlah) AS total_harga
+FROM tiket JOIN rumah ON tiket.id_rumah = rumah.id_rumah 
+JOIN user ON tiket.id_user = user.id_user;") or die (mysqli_error());
 
 while($data= mysqli_fetch_array($query_mysql)){
 ?>
@@ -36,8 +39,10 @@ while($data= mysqli_fetch_array($query_mysql)){
 <tr>
     <td><?php echo $nomor++;?></td>
     <td><?php echo $data["username"];?></td>
-    <td><?php echo $data["rumah"];?></td>
+    <td><?php echo $data["nama"];?></td>
     <td><?php echo $data["jumlah"];?></td>
+    <td><?php echo $data["harga"];?></td>
+    <td><?php echo $data["total_harga"];?></td>    
     <td><?php echo $data["tanggal"];?></td>
 
     <td><span><a href='delete_tiket.php?id_tiket=<?php echo $data["id_tiket"];?>'>Hapus</a></span></td>

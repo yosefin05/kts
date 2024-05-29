@@ -122,13 +122,14 @@ $harga = $rumah_data['harga'];
                     <td>Rumah</td>
                     <td><input type="text" name="nama" value="<?php echo $nama; ?>" readonly></td>
                 </tr>
-                <tr>
-                    <td>Harga</td>
-                    <td><input type="text" name="harga" value="<?php echo $harga; ?>" readonly></td>
-                </tr>
+                
                 <tr>
                     <td>Jumlah Tiket</td>
                     <td><input type="number" name="jumlah" min="1" required></td>
+                </tr>
+                <tr>
+                    <td>Harga</td>
+                    <td><input type="text" name="harga" value="<?php echo $harga; ?>" readonly></td>
                 </tr>
                 <tr>
                     <td>Tanggal Pemesanan</td>
