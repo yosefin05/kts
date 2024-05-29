@@ -1,83 +1,88 @@
 <?php
 include 'koneksi.php';
 
-//kalau tidak ada id di query string
-if(!isset($_GET['id_rumah'])){
-    header('location:index.php');
-}
-$id_rumah = $_GET['id_rumah'];
+// Cek apakah ada parameter id_rumah yang dikirim
+if (isset($_GET['id_rumah'])) {
+    $id_rumah = $_GET['id_rumah'];
 
-//fetech user data based on id
-$result = mysqli_query($mysqli,"SELECT * FROM rumah WHERE id_rumah=$id_rumah");
-
-while($user_data = mysqli_fetch_array($result)){
-$nama = $user_data['nama'];
-$informasi = $user_data['informasi']; 
-$gambar = $user_data['gambar']; 
-$id_pulau = $user_data['id_pulau']; 
+    // Ambil data rumah berdasarkan id_rumah
+    $query = mysqli_query($mysqli, "SELECT * FROM rumah WHERE id_rumah = '$id_rumah'");
+    $data = mysqli_fetch_array($query);
+} else {
+    die("ID Rumah tidak ditemukan.");
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Rumah</title>
+</head>
 <body>
-<div class="button2">
-    <a href="tabel_rumah.php" class="btn2">KEMBALI</a>
-</div> 
-<div class="container">
-    <h1>Rumah</h1>
-        <form method="POST" action="edit_rumah_proses.php" >
-        <table>  
-        <tr>
-            <input type="hidden" name="id_rumah" value="id_rumah">
-        </tr>          
-        <tr>
-            <td>Pulau</td>
-            <td><select name="pulau">
-            <?php 
-            include "koneksi.php";
-            $sql = "SELECT * FROM `pulau`";
-            $all_pulau = mysqli_query($mysqli,$sql);
-                // use a while loop to fetch data 
-                // from the $all_categories variable 
-                // and individually display as an option
-                while ($pulau = mysqli_fetch_array(
-                        $all_pulau,MYSQLI_ASSOC)):; 
-            ?>
-                <option value="<?php echo $pulau["id_pulau"];
-                    // The value we usually set is the primary key
-                ?>">
-                    <?php echo $pulau["pulau"];
-                        // To show the category name to the user
-                    ?>
-                </option>
-            <?php 
-                endwhile; 
-                // While loop must be terminated
-            ?>
-            </select></td>
-            </tr>
+    <div class="container">
+    <h1>Edit Rumah Adat</h1> 
+    <form action="edit_rumah_proses.php" method="post">
+        <input type="hidden" name="id_rumah" value="<?php echo $data['id_rumah']; ?>">
+        <table>
             <tr>
-                <td>Rumah</td>
-                <td><input type="text" name="rumah" value="<?php echo $nama;?>"></td>
+                <td>Pulau</td>
+                <td><select name="pulau">
+                <?php 
+                include "koneksi.php";
+                $sql = "SELECT * FROM `pulau`";
+                $all_pulau = mysqli_query($mysqli,$sql);
+                    // use a while loop to fetch data 
+                    // from the $all_categories variable 
+                    // and individually display as an option
+                    while ($pulau = mysqli_fetch_array(
+                            $all_pulau,MYSQLI_ASSOC)):; 
+                ?>
+                    <option value="<?php echo $pulau["id_pulau"];
+                        // The value we usually set is the primary key
+                    ?>">
+                        <?php echo $pulau["pulau"];
+                            // To show the category name to the user
+                        ?>
+                    </option>
+                <?php 
+                    endwhile; 
+                    // While loop must be terminated
+                ?> 
+                </select></td>
+            </tr>        
+            <tr>
+                <td>Nama Rumah</td>
+                <td><input type="text" name="nama" value="<?php echo $data['nama']; ?>" required></td>
             </tr>
             <tr>
                 <td>Informasi</td>
-                <td><input type="text" name="informasi" value="<?php echo $informasi;?>"></td>
+                <td><textarea name="informasi" required><?php echo $data['informasi']; ?></textarea></td>
             </tr>
             <tr>
                 <td>Gambar</td>
-                <td><input type="img" name="gambar" value="<?php echo $gambar;?>"></td>
+                <td><input type="text" name="gambar" value="<?php echo $data['gambar']; ?>" required></td>
             </tr>
-
             <tr>
-                <td><input type="hidden" name="id_pulau"value=<?php echo $_GET['id_rumah'];?>></td>
-                <td><input type="submit" name="simpan"value="Simpan"></td>
+                <td>Harga</td>
+                <td><input type="text" name="harga" value="<?php echo $data['harga']; ?>" required></td>
             </tr>
-        <h5>Gunakan huruf kapital pada awal kata.</h5>    
-        </table>          
+            <tr>
+                <td></td>
+                <td><button type="submit" name="simpan">Simpan</button></td>
+            </tr>
+        </table>
     </form>
-</div>
+    </div>
+    <div class="button2">
+        <a href="admin.php" class="btn2">KEMBALI</a>
+    </div>
+</body>
+</html>
+
 <style>
-body {
+    body {
     font-family: Arial, sans-serif;
     background-color: #070F2B;
     display: flex;
@@ -85,92 +90,65 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-}
-
-.container {
+    }
+    .container {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
-}
-
-h1 {
-    margin-bottom: 20px;
-}
-
-table {
-    margin: 0 auto;
-    margin-bottom: 20px;
-}
-
-td {
-    padding: 10px;
-}
-
-input[type="text"]
-input[type="img"]
-select{
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-h5 {
-    color: #666;
-    font-size: 0.9em;
-    margin-top: 20px;
-}
-
-input[type="submit"] {
-    background-color: #070F2B;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    transition: 0.3s ease;
-}
-
-input[type="submit"] {
-    background-color: #070F2B;
-
-}
-
-a{
-    display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #070F2B;
-    font-size: 0.9em;
-}
-
-a:hover {
-    color: #070F2B;
-}
-.button2{
-    position:absolute;
-    top: 5%;
-    left: 5%;
-    transform: translate(-50%-50%);
-    display: inline-block;
-}
-.btn2{
-    border: 1px solid;
-    padding: 5px 20px;
-    color: white;
-    text-decoration: none;
-    transition: 0.6s ease;
-    margin: 10px;
-}
-.btn2:hover{
-    background-color: rgba(173, 173, 173, 0.377);
-    color: white;
-}
+    }
+    h1 {
+        margin-bottom: 20px;
+    }
+    table {
+        margin-bottom: 20px;
+    }
+    td {
+        padding: 10px;
+    }
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 8px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #070F2B;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #555;
+    }
+    .button2{
+        position:absolute;
+        top: 5%;
+        right: 5%;
+        transform: translate(-50%-50%);
+        display: inline-block;
+    }
+    .btn2{
+        border: 1px solid;
+        padding: 5px 20px;
+        color: white;
+        text-decoration: none;
+        transition: 0.6s ease;
+        margin: 10px;
+    }
+    .btn2:hover{
+        background-color: rgba(173, 173, 173, 0.377);
+        color: white;
+    }
+    a {
+        text-decoration: none;
+        color: #070F2B;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
 </style>

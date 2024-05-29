@@ -13,12 +13,12 @@ $result = mysqli_query($mysqli,$sql);
 if($result){
     echo "<script>
             alert('Input data successfully');
-            document.location = 'roemahku.php';
+            document.location = 'rumah.php';
         </script>";
 }else{
     echo "<script>
     alert('Input data Failed');
-    document.location = 'pesan.php';
+    document.location = 'rumah.php';
 </script>";
 }
 ?>

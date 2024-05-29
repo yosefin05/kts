@@ -87,7 +87,8 @@ td {
     padding: 10px;
 }
 
-input[type="text"] {
+input[type="text"],
+select {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
