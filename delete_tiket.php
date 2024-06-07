@@ -12,7 +12,7 @@ if(isset($_GET['id_tiket'])){
     // Cek apakah query berhasil
     if($result){
         // Redirect kembali ke halaman admin jika berhasil
-        header("Location: admin.php");
+        header("Location: tabel_tiket.php");
         exit();
     } else {
         // Tampilkan pesan error jika gagal
@@ -20,7 +20,7 @@ if(isset($_GET['id_tiket'])){
     }
 } else {
     // Redirect ke halaman admin jika tidak ada ID yang dikirim
-    header("Location: admin.php");
+    header("Location: tabel_tiket.php");
     exit();
 }
 ?>

@@ -1,42 +1,43 @@
 <?php
-//mengaktifkan session pada php
+// Mengaktifkan session pada PHP
 session_start();
 include 'koneksi.php';
 
 $username = $_POST['username'];
-$password = ($_POST['password']);
+$password = $_POST['password'];
 
-$login = mysqli_query($mysqli,"select * from user where username='$username' and password='$password'");
+// Lakukan pencarian user berdasarkan username dan password
+$login = mysqli_query($mysqli, "SELECT * FROM user WHERE username='$username' AND password='$password'");
 $cek = mysqli_num_rows($login);
 
-if($cek > 0){
-
+if ($cek > 0) {
+    // Jika ditemukan data user yang sesuai
     $data = mysqli_fetch_assoc($login);
 
-    //cek jika user login sebagai admin
-    if($data['role']=="admin"){
+    // Simpan id_user dalam session
+    $_SESSION['id_user'] = $data['id_user'];
 
-        //buat session login dan username
-        $_SESSION['username'] = $username;
-        $_SESSION['role'] ="admin";
-        //alihkan ke halaman dashboard admin
-        header("location:admin.php");
+    // Simpan username dalam session
+    $_SESSION['username'] = $data['username'];
 
-    //cek jika user login sebagai user
-    }else if ($data['role']=="user"){
-        //buat session login dan username
-        $_SESSION['username'] = $username;
+    // Cek peran (role) pengguna
+    if ($data['role'] == "admin") {
+        // Jika pengguna adalah admin, set session dan arahkan ke halaman admin
+        $_SESSION['role'] = "admin";
+        header("location: admin.php");
+    } elseif ($data['role'] == "user") {
+        // Jika pengguna adalah user, set session dan arahkan ke halaman user
         $_SESSION['role'] = "user";
-        //alihkan ke halaman dashboard user
-        header("location:user.php");
-    }else{
-
-        //alihkan ke halaman login kembali
-        header("location:login.php");
+        header("location: user.php");
+    } else {
+        // Jika tidak ada peran yang cocok, arahkan ke halaman login
+        header("location: login.php");
     }
-}else{
+} else {
+    // Jika tidak ada pengguna yang cocok, tampilkan pesan kesalahan dan arahkan kembali ke halaman login
     echo "<script>
-    alert('You are not registered yet');
+    alert('Username atau password salah!');
     document.location = 'login.php';
-    </script>";}
+    </script>";
+}
 ?>

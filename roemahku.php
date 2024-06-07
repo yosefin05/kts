@@ -117,7 +117,9 @@
                         <p><?php echo $data['informasi']; ?></p>
                         <img src="<?php echo $data['gambar']; ?>" alt="Gambar Rumah Adat">
                     </div>
-                    <a href="pesan.php?id_rumah=<?php echo $data['id_rumah']; ?>" class="order-btn">Pesan (<?php echo $data['harga']; ?>)</a>
+                    <a href="pesan.php?id_rumah=<?php echo $data['id_rumah']; ?>" class="order-btn">Pesan 
+                    <?php echo "<td>Rp " . number_format($data['harga'], 0, ',', '.') . "</td>";
+?></a>
                 </div>
             <?php } ?>
     </div>

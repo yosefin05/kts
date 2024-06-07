@@ -8,8 +8,9 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-// Ambil data username dari session
+// Ambil data username dan id_user dari session
 $username = $_SESSION['username'];
+$id_user = $_SESSION['id_user'];
 
 // Cek apakah id_rumah ada di query string
 if (!isset($_GET['id_rumah'])) {
@@ -112,7 +113,7 @@ $harga = $rumah_data['harga'];
     <a href="roemahku.php" class="btn2">KEMBALI</a>
     <div class="container">
         <h1>Pembelian Tiket</h1>
-        <form action="tiket_proses.php" method="post">
+        <form action="tiket_proses.php" method="POST">
             <table>
                 <tr>
                     <td>Nama</td>
@@ -122,7 +123,6 @@ $harga = $rumah_data['harga'];
                     <td>Rumah</td>
                     <td><input type="text" name="nama" value="<?php echo $nama; ?>" readonly></td>
                 </tr>
-                
                 <tr>
                     <td>Jumlah Tiket</td>
                     <td><input type="number" name="jumlah" min="1" required></td>
@@ -136,11 +136,11 @@ $harga = $rumah_data['harga'];
                     <td><input type="date" name="tanggal" required></td>
                 </tr>
                 <tr>
-                    <td></td>
                     <td><button class="btn" type="submit" name="submit">Beli Tiket</button></td>
                 </tr>
             </table>
             <input type="hidden" name="id_rumah" value="<?php echo $id_rumah; ?>">
+            <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
         </form>
     </div>
 </body>

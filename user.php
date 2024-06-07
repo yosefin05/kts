@@ -11,6 +11,7 @@
             <div class="main">
                 <ul>
                     <li><a href="roemahku.php">Rumah</a></li> 
+                    <li><a href="riwayat.php">Riwayat</a></li>                         
                     <li><a href="logout.php">Log Out</a></li>                         
                 </ul>
             </div>
