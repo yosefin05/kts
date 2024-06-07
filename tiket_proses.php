@@ -28,20 +28,25 @@ if ($result_check->num_rows == 0) {
     exit();
 }
 
+// Ambil harga dari rumah
+$rumah_data = $result_check->fetch_assoc();
+$harga = $rumah_data['harga'];
+
+// Hitung total_harga
+$total_harga = $harga * $jumlah;
+
 // Insert data ke tabel tiket
-$query = "INSERT INTO tiket (id_user, id_rumah, jumlah, tanggal) VALUES (?, ?, ?, ?)";
+$query = "INSERT INTO tiket (id_user, id_rumah, jumlah, tanggal, total_harga) VALUES (?, ?, ?, ?, ?)";
 $stmt = $mysqli->prepare($query);
-$stmt->bind_param("iiis", $id_user, $id_rumah, $jumlah, $tanggal);
+$stmt->bind_param("iiisi", $id_user, $id_rumah, $jumlah, $tanggal, $total_harga);
 $result = $stmt->execute();
 
 if ($result) {
     echo "<script>
             alert('Pemesanan Berhasil');
-            document.location = 'invoice.php';
+            document.location = 'invoice.php?id_rumah=$id_rumah&jumlah=$jumlah&tanggal=$tanggal&total_harga=$total_harga';
         </script>";
-        // Setelah proses selesai, alihkan pengguna ke halaman invoice
-        header("Location: invoice.php?id_rumah=$id_rumah&jumlah=$jumlah&tanggal=$tanggal");
-        exit();
+    exit();
 } else {
     echo "<script>
             alert('Pemesanan Gagal');
